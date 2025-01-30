@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Nos recettes !
+{% endblock %}
+
+{% block body %}
+	{% for recipe in recipes %}
+		<div>
+			<h2>{{ recipe.name }}</h2>
+			<p>{{ recipe.description }}</p>
+			<a href="{{ path('app_recipe.show', {slug: recipe.slug}) }}">Voir la recette</a>
+
+		</div>
+
+
+	{% endfor %}
+
+	<a href="{{ path('app_recipe_create')}}">Créer sa propre recette</a>
+
+{% endblock %}

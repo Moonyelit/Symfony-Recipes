@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title%}
+	Create Recipe
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/test.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+	<p class="red">Create a new recipe</p>
+
+    <img src="{{ asset('images/recipe.jpg') }}" alt="recipe">
+
+	<section>
+		{# {{form(recipesForm) }} #}
+
+	{# balise form ouvrante #}
+	{{form_start(recipesForm, {
+		'attr':{
+			'id': 'recipeForm',
+			'class': 'form-horizontal'
+		}
+	}) }}
+
+		<div class="test">
+			{{ form_label(recipeForm.name) }}
+			{{ form_widget(recipeForm.name) }}
+			{{ form_errors(recipeForm.name) }}
+
+
+		</section>
+
+	{% endblock %}

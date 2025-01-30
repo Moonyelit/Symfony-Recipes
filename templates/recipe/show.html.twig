@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{%block title %} 
+{{ recipe.name }}
+{% endblock %}
+
+{% block body %}
+<p> {{ recipe.name }}</p>
+
+<p> {{ recipe.description }}</p>
+
+{# <a href="{{path('app_recipe_update', {id: recipe.id}) }}">Modifier</a> #}
+<a href="{{path('app_recipe_delete', {id: recipe.id}) }}">Supprimer</a>
+{% endblock %}
