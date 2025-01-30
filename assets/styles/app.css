@@ -1,16 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: whitesmoke;
+    background-color: #f9f5f0; /* Beige clair pour un fond doux et chaleureux */
+    font-family: 'Georgia', serif; /* Police plus douce et classique */
 }
 
 /* Styles pour la barre de navigation */
 header {
-    background-color: #333;
-    padding: 15px 0;
+    background-color: #63523d; /* Brun doux et terreux */
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -19,20 +22,54 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 nav ul li a {
-    color: white;
+    color: #f9f5f0; /* Couleur claire pour contraster avec le fond */
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #ffd700; /* Doré pour un effet chaleureux et accueillant */
+    transform: translateY(-2px); /* Léger effet de "soulèvement" au survol */
 }
 
+/* Ajout d'émoticônes de cuisine */
+nav ul li a::before {
+    margin-right: 10px;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
 
+nav ul li:nth-child(1) a::before {
+    content: '🏠'; /* Maison pour la page d'accueil */
+}
+
+nav ul li:nth-child(2) a::before {
+    content: '🍳'; /* Poêle pour les recettes */
+}
+
+/* Effet de survol sur les émoticônes */
+nav ul li a:hover::before {
+    transform: scale(1.2); /* Légère augmentation de taille au survol */
+}
+
+/* Optionnel : Ajouter une bordure subtile sous le header */
+header::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #6b5b45; /* Brun légèrement plus foncé pour une bordure subtile */
+    margin-top: 10px;
+}

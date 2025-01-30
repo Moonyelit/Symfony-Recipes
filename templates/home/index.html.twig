@@ -1,33 +1,52 @@
 {% extends 'base.html.twig' %}
 
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('styles/home.css') }}">
-		{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/home.css') }}">
+{% endblock %}
+
+{% block javascriptsCustom %}
+
+	<script defer src="{{ asset('javascript/carousel.js') }}"></script>
+
+{% endblock %}
 
 
-{% block title%}
-    Accueil - Recettes de Cuisine
+{% block title %}
+	Accueil - Recettes de Cuisine
 {% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur notre site de recettes de cuisine</h1>
-    <p>Découvrez une variété de recettes délicieuses et faciles à préparer.</p>
-    
-    <a href="{{ path('app_recipes') }}">Nos Recettes</a>
-    
+	<!-- Section Hero avec Carousel -->
+	<div class="hero">
+		<div class="carousel">
+			<img src="{{ asset('images/hero1.jpg') }}" alt="Recette 1">
+			<img src="{{ asset('images/hero2.jpg') }}" alt="Recette 2">
+			<img src="{{ asset('images/hero3.jpg') }}" alt="Recette 3">
+		</div>
+		<div class="hero-content">
+			<h1>Bienvenue sur notre site de recettes de cuisine</h1>
+			<p>Découvrez des recettes de grand-mère, simples et savoureuses.</p>
+		</div>
+	</div>
 
-    
-    <section>
-        <h2>Nos dernières recettes</h2>
-        <ul>
-            <li>Recette 1</li>
-            <li>Recette 2</li>
-            <li>Recette 3</li>
-        </ul>
-    </section>
-    
-    <section>
-        <h2>À propos de nous</h2>
-        <p>Nous sommes passionnés par la cuisine et nous aimons partager nos recettes avec vous.</p>
-    </section>
+	<!-- Section des dernières recettes -->
+	<section>
+		<h2>Nos dernières recettes</h2>
+		<ul>
+			<li>Recette 1</li>
+			<li>Recette 2</li>
+			<li>Recette 3</li>
+		</ul>
+	</section>
+
+	<!-- Section À propos -->
+	<section>
+		<h2>À propos de nous</h2>
+		<p>Nous sommes passionnés par la cuisine traditionnelle et nous aimons partager nos recettes avec vous.</p>
+	</section>
+
+	<!-- Bouton pour voir les recettes -->
+	<div style="text-align: center; margin: 20px 0;">
+		<a href="{{ path('app_recipes') }}" class="recipe-button">Voir toutes les recettes</a>
+	</div>
 {% endblock %}

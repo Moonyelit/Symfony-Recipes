@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!
+{% endblock %}
+
+{% block body %}
+
+
+	<section>
+		{{ form_start(testForm,
+			 {attr: {
+				class: "test"
+			}}) 
+						}}
+
+
+			<article class="flex">
+
+				{{ form_label(testForm.description) }}
+				{{ form_widget(testForm.description) }}
+			</article>
+
+			<article class="flex">
+
+				{{ form_label(testForm.test) }}
+				{{ form_widget(testForm.test) }}
+			</article>
+
+
+			<div>
+				{{ form_widget(testForm.submit) }}	
+			</div>
+
+
+		{{ form_end(testForm) }}
+	</section>
+{% endblock %}

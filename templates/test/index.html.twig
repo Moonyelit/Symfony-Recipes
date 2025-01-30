@@ -4,11 +4,13 @@
 
 {% block body %}
 
+<div><a href="{{ path('app_test_create') }}">Create</a></div>
+
     <section>
         {% for test in tests %}
             <div>
                 <p>{{ test.test }}</p>
-                <a href="">Voir détail</a>
+                <a href="{{ path('app_test_details', {id: test.id}) }}">Voir détail</a>
             </div>
         {% endfor %}
     </section>

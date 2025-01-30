@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!
+{% endblock %}
+
+{% block body %}
+
+
+	<div>
+		<p>{{ test.test }}</p>
+		<a href="{{ path('app_test_update', {id: test.id}) }}">Modifier</a>
+		<a href="{{ path('app_test_delete', {id: test.id}) }}">Supprimer</a>
+	</div>
+
+{% endblock %}

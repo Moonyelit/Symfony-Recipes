@@ -1,47 +1,83 @@
+/* Style général */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', serif; /* Police classique pour un style vintage */
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: #f8f3e6; /* Beige clair pour un fond chaleureux */
+    color: #4a4a4a; /* Couleur de texte douce */
 }
 
 h1, h2 {
-    color: #333;
+    color: #5a3e36; /* Brun doux pour les titres */
+    font-family: 'Courier New', Courier, monospace; /* Police rappelant les vieux livres de recettes */
 }
 
 a {
-    color: #007bff;
+    color: #8b7355; /* Brun terreux pour les liens */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: #6b5b45; /* Brun plus foncé au survol */
     text-decoration: underline;
 }
 
+/* Section Hero avec Carousel */
 .hero {
-    background-image: url('/path/to/your/image.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    overflow: hidden;
+    height: 400px; /* Hauteur du carousel */
+    background-color: #5a3e36; /* Fond brun pour le carousel */
     color: white;
-    padding: 50px 20px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour le texte */
 }
 
 .hero p {
-    font-size: 1.2em;
+    font-size: 1.5em;
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre toute la zone */
+    opacity: 0.7; /* Légère transparence pour les images */
+}
+
+/* Sections de contenu */
 section {
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 800px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 ul {
@@ -50,5 +86,25 @@ ul {
 }
 
 li {
-    padding: 5px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0; /* Ligne de séparation entre les éléments */
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Bouton pour les recettes */
+.recipe-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8b7355; /* Brun terreux */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-button:hover {
+    background-color: #6b5b45; /* Brun plus foncé au survol */
 }
