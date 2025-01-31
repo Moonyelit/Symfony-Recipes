@@ -1,6 +1,10 @@
+{{ form_start(recipeForm) }}
+{{ form_widget(recipeForm) }}
 
-
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div>
+    {# {{ form_label(recipeForm.name) }}
+    {{ form_widget(recipeForm.name) }} #}
+    {# {{ form_errors(recipeForm.name) }} #}
+</div>
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(recipeForm) }}

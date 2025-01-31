@@ -3,23 +3,29 @@ body {
     font-family: 'Georgia', serif; /* Police classique pour un style vintage */
     margin: 0;
     padding: 0;
-    background-color: #f8f3e6; /* Beige clair pour un fond chaleureux */
-    color: #4a4a4a; /* Couleur de texte douce */
+    background-color: #e8f1f8; /* Bleu très clair pour le fond */
+    color: #1a365d; /* Bleu foncé pour le texte */
 }
 
-h1, h2 {
-    color: #5a3e36; /* Brun doux pour les titres */
+h1 {
+    color: #e8f1f8; /* Bleu marine pour les titres */
+    font-family: 'Courier New', Courier, monospace; /* Police rappelant les vieux livres de recettes */
+}
+
+
+h2 {
+    color: #1e4976; /* Bleu marine pour les titres */
     font-family: 'Courier New', Courier, monospace; /* Police rappelant les vieux livres de recettes */
 }
 
 a {
-    color: #8b7355; /* Brun terreux pour les liens */
+    color: #1a4971; /* Bleu marine pour les liens */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #6b5b45; /* Brun plus foncé au survol */
+    color: #0d2b4d; /* Bleu très foncé au survol */
     text-decoration: underline;
 }
 
@@ -28,7 +34,7 @@ a:hover {
     position: relative;
     overflow: hidden;
     height: 400px; /* Hauteur du carousel */
-    background-color: #5a3e36; /* Fond brun pour le carousel */
+    background-color: #1e5b99; /* Bleu marine profond pour le carousel */
     color: white;
     text-align: center;
     display: flex;
@@ -99,12 +105,12 @@ li:last-child {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #8b7355; /* Brun terreux */
+    background-color: #1a4971; /* Bleu marine pour le bouton */
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .recipe-button:hover {
-    background-color: #6b5b45; /* Brun plus foncé au survol */
+    background-color: #0d2b4d; /* Bleu très foncé au survol du bouton */
 }

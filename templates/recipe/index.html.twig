@@ -8,7 +8,8 @@
 	{% for recipe in recipes %}
 		<div>
 			<h2>{{ recipe.name }}</h2>
-			<p>{{ recipe.description }}</p>
+			<p>Categories : {{ recipe.category.name }}</p>
+
 			<a href="{{ path('app_recipe.show', {slug: recipe.slug}) }}">Voir la recette</a>
 
 		</div>
