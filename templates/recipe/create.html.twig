@@ -1,11 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer votre nouvelle recette{% endblock %}
+{% block title %}Créer votre nouvelle recette
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/formRecipe.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouvelle recette</h1>
+{% block content %}
 
-    {{ include('recipe/form.html.twig') }}
+	<div class="form-container">
+		<h1>Créer une nouvelle recette</h1>
 
-    <a href="{{ path('app_recipes') }}">Revenir à la liste des recettes</a>
+		{{ form_start(recipeForm) }}
+		<div class="form-group">
+			{{ form_label(recipeForm.name) }}
+			{{ form_widget(recipeForm.name) }}
+			{{ form_errors(recipeForm.name) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(recipeForm.description) }}
+			{{ form_widget(recipeForm.description) }}
+			{{ form_errors(recipeForm.description) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(recipeForm.slug) }}
+			{{ form_widget(recipeForm.slug) }}
+			{{ form_errors(recipeForm.slug) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(recipeForm.category) }}
+			{{ form_widget(recipeForm.category) }}
+			{{ form_errors(recipeForm.category) }}
+		</div>
+
+		<div class="form-group button-group">
+			<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+		</div>
+		{{ form_end(recipeForm) }}
+
+		<a href="{{ path('app_recipes') }}" class="back-link">Revenir à la liste des recettes</a>
+	</div>
 {% endblock %}
+{% endblock %}
+

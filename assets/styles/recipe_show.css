@@ -1,0 +1,74 @@
+:root {
+    --green: #406741;
+    --orange: #d99939;
+    --offwhite: #FAF3E0;
+    --dark: #333;
+}
+
+/* Réinitialisation et base */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--offwhite);
+    color: var(--dark);
+}
+
+.recipe-detail-container {
+    max-width: 800px;
+    margin: 3vh auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-title {
+    text-align: center;
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+.recipe-content {
+    line-height: 1.6;
+}
+
+.recipe-description {
+    font-size: 1.1em;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.recipe-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: var(--orange);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: var(--green);
+}
+
+.btn-delete {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #cc0000;
+}

@@ -1,52 +1,41 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Accueil - CuisineFacile{% endblock %}
+
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('styles/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/home.css') }}">
 {% endblock %}
 
-{% block javascriptsCustom %}
-
-	<script defer src="{{ asset('javascript/carousel.js') }}"></script>
-
-{% endblock %}
-
-
-{% block title %}
-	Accueil - Recettes de Cuisine
-{% endblock %}
 
 {% block body %}
-	<!-- Section Hero avec Carousel -->
-	<div class="hero">
-		<div class="carousel">
-			<img src="{{ asset('images/hero1.jpg') }}" alt="Recette 1">
-			<img src="{{ asset('images/hero2.jpg') }}" alt="Recette 2">
-			<img src="{{ asset('images/hero3.jpg') }}" alt="Recette 3">
-		</div>
-		<div class="hero-content">
-			<h1>Bienvenue sur notre site de recettes de cuisine</h1>
-			<p>Découvrez des recettes de grand-mère, simples et savoureuses.</p>
-		</div>
-	</div>
+{% block content %}
+    <section class="hero">
+        <h1>Bienvenue sur CuisineFacile 🍽️</h1>
+        <p>Découvrez des recettes gourmandes et faciles à réaliser pour tous les jours.</p>
+        <a href="{{ path('app_recipes') }}" class="cta-button">Explorer les Recettes</a>
+    </section>
 
-	<!-- Section des dernières recettes -->
-	<section>
-		<h2>Nos dernières recettes</h2>
-		<ul>
-			<li>Recette 1</li>
-			<li>Recette 2</li>
-			<li>Recette 3</li>
-		</ul>
-	</section>
+    <section class="popular-recipes">
+        <h2>Recettes Populaires</h2>
+        <div class="recipe-grid">
+            <div class="recipe-card">
+                <img src="{{ asset('images/recipe1.jpg') }}" alt="Gratin de légumes">
+                <h3>Gratin de légumes</h3>
+            </div>
+            <div class="recipe-card">
+                <img src="{{ asset('images/recipe2.jpg') }}" alt="Poulet rôti">
+                <h3>Poulet rôti au miel</h3>
+            </div>
+            <div class="recipe-card">
+                <img src="{{ asset('images/recipe3.jpg') }}" alt="Salade fraîcheur">
+                <h3>Salade fraîcheur</h3>
+            </div>
+        </div>
+    </section>
 
-	<!-- Section À propos -->
-	<section>
-		<h2>À propos de nous</h2>
-		<p>Nous sommes passionnés par la cuisine traditionnelle et nous aimons partager nos recettes avec vous.</p>
-	</section>
-
-	<!-- Bouton pour voir les recettes -->
-	<div style="text-align: center; margin: 20px 0;">
-		<a href="{{ path('app_recipes') }}" class="recipe-button">Voir toutes les recettes</a>
-	</div>
+    <section class="about">
+        <h2>À propos de nous</h2>
+        <p>Notre mission est de rendre la cuisine accessible à tous avec des recettes simples et délicieuses.</p>
+    </section>
+{% endblock %}
 {% endblock %}

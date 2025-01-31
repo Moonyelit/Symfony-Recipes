@@ -1,22 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Nos recettes !
+    Nos recettes !
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/indexRecipe.css') }}">
 {% endblock %}
 
 {% block body %}
-	{% for recipe in recipes %}
-		<div>
-			<h2>{{ recipe.name }}</h2>
-			<p>Categories : {{ recipe.category.name }}</p>
+{% block content %}
 
-			<a href="{{ path('app_recipe.show', {slug: recipe.slug}) }}">Voir la recette</a>
-
-		</div>
-
-
-	{% endfor %}
-
-	<a href="{{ path('app_recipe_create')}}">Créer sa propre recette</a>
-
+    <div class="container">
+        <h1 class="page-title">Nos Recettes</h1>
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+                <div class="recipe-card">
+                    {# <img src="{{ asset('images/recipes/' ~ recipe.image) }}" alt="{{ recipe.name }}" class="recipe-image"> #}
+                    <div class="recipe-content">
+                        <h2 class="recipe-title">{{ recipe.name }}</h2>
+                        <p class="recipe-category">Catégorie : {{ recipe.category.name }}</p>
+                        <p class="recipe-description">{{ recipe.description|slice(0, 100) }}...</p>
+                        <a href="{{ path('app_recipe.show', {slug: recipe.slug}) }}" class="recipe-button">Voir la recette</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="create-recipe-button" href="{{ path('app_recipe_create') }}">Créer sa propre recette</a>
+    </div>
+{% endblock %}
 {% endblock %}

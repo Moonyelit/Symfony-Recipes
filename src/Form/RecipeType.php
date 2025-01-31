@@ -59,13 +59,6 @@ class RecipeType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
-                'attr' => [
-                    'class' => 'btn btn-primary',
-                ],
-            ])
         ;
     }
 
