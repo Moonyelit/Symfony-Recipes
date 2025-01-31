@@ -8,28 +8,24 @@
 /* Réinitialisation et base */
 body {
     font-family: 'Arial', sans-serif;
+    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: var(--offwhite);
     color: var(--dark);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .login-container {
-    width: 100%;
     max-width: 400px;
+    margin: 10vh auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
 .login-title {
+    text-align: center;
     color: var(--green);
     margin-bottom: 20px;
 }
@@ -37,11 +33,10 @@ body {
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .form-group {
-    text-align: left;
+    margin-bottom: 20px;
 }
 
 .form-group label {
@@ -58,26 +53,21 @@ body {
     border-radius: 5px;
     font-size: 1em;
     color: var(--dark);
-    box-sizing: border-box;
 }
 
 .form-group input:focus {
     border-color: var(--orange);
     outline: none;
-    box-shadow: 0 0 5px rgba(217, 153, 57, 0.5);
 }
 
-.alert {
-    padding: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    text-align: center;
+.form-group .form-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
 }
 
 .btn-login {
+    display: inline-block;
     padding: 10px 20px;
     background-color: var(--orange);
     color: white;
@@ -86,7 +76,7 @@ body {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1em;
+    text-align: center;
 }
 
 .btn-login:hover {

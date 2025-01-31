@@ -82,6 +82,10 @@ body {
     font-weight: normal;
 }
 
+.boutton-group {
+    margin-top: 1rem;
+}
+
 .btn-register {
     display: inline-block;
     padding: 10px 20px;

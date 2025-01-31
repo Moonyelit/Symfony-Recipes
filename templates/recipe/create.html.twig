@@ -38,6 +38,11 @@
 			{{ form_errors(recipeForm.category) }}
 		</div>
 
+		<div class="form-group">
+			{{ form_label(recipeForm.image) }}
+			{{ form_widget(recipeForm.image) }}
+			{{ form_errors(recipeForm.image) }}
+
 		<div class="form-group button-group">
 			<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 		</div>
