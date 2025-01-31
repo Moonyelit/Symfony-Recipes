@@ -51,6 +51,9 @@ final class RecipeController extends AbstractController
         $recipeForm->handleRequest($request);
 
         if ($recipeForm->isSubmitted() && $recipeForm->isValid()) {
+            /** @var UploadedFile $image */
+            $image = $recipeForm->get('image')->getData();
+            $image =>move('???', $recipe->getId() . '.' . $image->getClientOriginalExtension());
             $entityManager->persist($recipe);
             $entityManager->flush();
 
