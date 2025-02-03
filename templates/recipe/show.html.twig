@@ -1,27 +1,32 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    {{ recipe.name }}
+	{{ recipe.name }}
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/recipe_show.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/recipe_show.css') }}">
 {% endblock %}
 
 {% block body %}
-{% block content %}
+	{% block content %}
 
-    <div class="recipe-detail-container">
-        <h1 class="recipe-title">{{ recipe.name }}</h1>
-        
-        <div class="recipe-content">
-            <p class="recipe-description">{{ recipe.description }}</p>
-            
-            <div class="recipe-actions">
-                {# <a href="{{ path('app_recipe_update', {id: recipe.id}) }}" class="btn btn-edit">Modifier</a> #}
-                <a href="{{ path('app_recipe_delete', {id: recipe.id}) }}" class="btn btn-delete">Supprimer</a>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+		<div class="recipe-detail-container">
+			<h1 class="recipe-title">{{ recipe.name }}</h1>
+
+			<div class="recipe-content">
+				<div class="recipe-image-container">
+					<img src="{{ asset('recettes/images/' ~ recipe.image) }}" alt="{{ recipe.name }}" class="recipe-image">
+				</div>
+
+				<p class="recipe-description">{{ recipe.description }}</p>
+
+				<div
+					class="recipe-actions">
+					<a href="{{ path('app_recipe_update', {id: recipe.id}) }}" class="btn btn-edit">Modifier</a>
+					<a href="{{ path('app_recipe_delete', {id: recipe.id}) }}" class="btn btn-delete">Supprimer</a>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
 {% endblock %}

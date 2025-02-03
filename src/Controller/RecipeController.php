@@ -6,6 +6,7 @@ use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,10 +52,17 @@ final class RecipeController extends AbstractController
         $recipeForm->handleRequest($request);
 
         if ($recipeForm->isSubmitted() && $recipeForm->isValid()) {
+
+            $recipe->setAuthor($this->getUser());
+
+
             /** @var UploadedFile $image */
             $image = $recipeForm->get('image')->getData();
-            $image = $recipe ->getId() . '.' . $image->getClientOriginalExtension();
-            $image ->move('???', $image);
+            $imagename = $recipe ->getId() . '.' . $image->getClientOriginalExtension();
+            $image ->move($this->getParameter('kernel.project_dir') . '/public/recettes/images', $imagename);
+            $recipe ->setImage($imagename);
+
+            
             $entityManager->persist($recipe);
             $entityManager->flush();
 
@@ -66,28 +74,37 @@ final class RecipeController extends AbstractController
         ]);
     }
 
-    // #[Route('/recipe/update', name: 'app_recipe_update')]
-    // public function update(Request $request, EntityManagerInterface $entityManager, RecipeRepository $recipeRepository): Response
-    // {
-    //     $recipe = $recipeRepository->find-($id);
+    #[Route('/recipe/{id}/update', name: 'app_recipe_update' , methods: ['GET', 'POST'])]
+    public function update(Request $request, Recipe $recipe, EntityManagerInterface $entityManager): Response
+    {
+        dd($recipe);
 
-    //     $recipeForm = $this->createForm(RecipeType::class, $recipe);
-    //     $recipeForm->handleRequest($request);
+        if ($this->getUser() !== $recipe->getAuthor()) {
+            return $this->redirectToRoute('app_recipes');
+        }
 
-    //     if($recipeForm->isSubmitted() && $recipeForm->isValid()){
 
-    //         $entityManager->persist($recipe);
-    //         $entityManager->flush();
+        $recipeForm = $this->createForm(RecipeType::class, $recipe);
+        $recipeForm->handleRequest($request);
 
-    //         return $this->redirectToRoute('app_recipes_all');
-    //     }
+        if ($recipeForm->isSubmitted() && $recipeForm->isValid()) {
+            $entityManager->flush();
 
-    // }
+            return $this->redirectToRoute('app_recipes', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('recipe/update.html.twig', [
+            'recipe' => $recipe,
+            'recipeForm' => $recipeForm,
+        ]);
+
+    }
 
     // Route pour afficher une recette par son slug
     #[Route('/recipe/{slug}', name: 'app_recipe.show')]
     public function showByName(string $slug, RecipeRepository $recipeRepository): Response
     {
+
         $recipe = $recipeRepository->findOneBy(["slug" => $slug]);
 
         return $this->render('recipe/show.html.twig', [
@@ -99,12 +116,11 @@ final class RecipeController extends AbstractController
     #[Route('/recipe/{id}/delete', name: 'app_recipe_delete')]
     public function delete(int $id, RecipeRepository $recipeRepository, EntityManagerInterface $entityManager): Response
     {
-
         $recipe = $recipeRepository->find($id);
 
         $entityManager->remove($recipe);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_recipe_all');
+        return $this->redirectToRoute('app_recipes');
     }
 }

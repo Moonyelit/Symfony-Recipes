@@ -38,6 +38,10 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'recipes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -116,6 +120,18 @@ class Recipe
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }
