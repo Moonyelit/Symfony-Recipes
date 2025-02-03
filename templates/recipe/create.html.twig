@@ -13,40 +13,8 @@
 	<div class="form-container">
 		<h1>Créer une nouvelle recette</h1>
 
-		{{ form_start(recipeForm) }}
-		<div class="form-group">
-			{{ form_label(recipeForm.name) }}
-			{{ form_widget(recipeForm.name) }}
-			{{ form_errors(recipeForm.name) }}
-		</div>
+    {{ include('recipe/form.html.twig', {'button_label': 'Créer'}) }}
 
-		<div class="form-group">
-			{{ form_label(recipeForm.description) }}
-			{{ form_widget(recipeForm.description) }}
-			{{ form_errors(recipeForm.description) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(recipeForm.slug) }}
-			{{ form_widget(recipeForm.slug) }}
-			{{ form_errors(recipeForm.slug) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(recipeForm.category) }}
-			{{ form_widget(recipeForm.category) }}
-			{{ form_errors(recipeForm.category) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(recipeForm.image) }}
-			{{ form_widget(recipeForm.image) }}
-			{{ form_errors(recipeForm.image) }}
-
-		<div class="form-group button-group">
-			<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-		</div>
-		{{ form_end(recipeForm) }}
 
 		<a href="{{ path('app_recipes') }}" class="back-link">Revenir à la liste des recettes</a>
 	</div>

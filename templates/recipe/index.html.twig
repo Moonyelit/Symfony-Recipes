@@ -20,9 +20,7 @@
 						{# <img src="{{ asset('images/recipes/' ~ recipe.image) }}" alt="{{ recipe.name }}" class="recipe-image"> #}
 						<div class="recipe-content">
 							<h2 class="recipe-title">{{ recipe.name }}</h2>
-							<div class="recipe-image-container">
-								<img src="{{ asset('recettes/images/' ~ recipe.image) }}" alt="{{ recipe.name }}" class="recipe-image">
-							</div>
+
 							<p class="recipe-category">Catégorie :
 								{{ recipe.category.name }}</p>
 							<p class="recipe-description">{{ recipe.description|slice(0, 100) }}...</p>

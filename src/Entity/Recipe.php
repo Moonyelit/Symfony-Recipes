@@ -6,9 +6,16 @@ use App\Repository\RecipeRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+#[UniqueEntity('name', message: 'Ce nom de recette est déjà utilisé')]
+#[UniqueEntity('slug', message: 'Ce slug est déjà utilisé')]
+#[Vich\Uploadable()]
 class Recipe
 {
     #[ORM\Id]
@@ -37,6 +44,10 @@ class Recipe
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[Vich\UploadableField(mapping: 'recipes', fileNameProperty: 'image')]
+    #[Assert\Image(maxSize: '5M', mimeTypes: ['image/jpeg', 'image/png'])]
+    private ?File $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'recipes')]
     #[ORM\JoinColumn(nullable: false)]
@@ -132,6 +143,20 @@ class Recipe
     public function setAuthor(?User $author): static
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+ 
+    public function getImageFile() : ?File
+    {
+        return $this->imageFile;
+    }
+
+
+    public function setImageFile(?File $imageFile) : static 
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }

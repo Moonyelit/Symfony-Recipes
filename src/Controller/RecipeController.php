@@ -6,7 +6,6 @@ use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +20,6 @@ final class RecipeController extends AbstractController
         // Utilisation de service externe
 
         $recipes = $recipeRepository->findAll();
-        // dump and die
-        // dd($recipes);
-
 
         return $this->render('recipe/index.html.twig', [
             "recipes" => $recipes,
@@ -55,14 +51,6 @@ final class RecipeController extends AbstractController
 
             $recipe->setAuthor($this->getUser());
 
-
-            /** @var UploadedFile $image */
-            $image = $recipeForm->get('image')->getData();
-            $imagename = $recipe ->getId() . '.' . $image->getClientOriginalExtension();
-            $image ->move($this->getParameter('kernel.project_dir') . '/public/recettes/images', $imagename);
-            $recipe ->setImage($imagename);
-
-            
             $entityManager->persist($recipe);
             $entityManager->flush();
 
@@ -77,14 +65,14 @@ final class RecipeController extends AbstractController
     #[Route('/recipe/{id}/update', name: 'app_recipe_update' , methods: ['GET', 'POST'])]
     public function update(Request $request, Recipe $recipe, EntityManagerInterface $entityManager): Response
     {
-        dd($recipe);
-
         if ($this->getUser() !== $recipe->getAuthor()) {
             return $this->redirectToRoute('app_recipes');
         }
 
+                // dd($recipe);
 
         $recipeForm = $this->createForm(RecipeType::class, $recipe);
+
         $recipeForm->handleRequest($request);
 
         if ($recipeForm->isSubmitted() && $recipeForm->isValid()) {

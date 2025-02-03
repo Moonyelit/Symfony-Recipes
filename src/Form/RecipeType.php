@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Image;
 
 class RecipeType extends AbstractType
 {
@@ -30,13 +29,7 @@ class RecipeType extends AbstractType
             ])
 
 
-
-            ->add('image', FileType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new Image()
-                ]
-            ])
+            ->add('imageFile', FileType::class)
 
 
 

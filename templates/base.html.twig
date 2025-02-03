@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Nom du Site de Cuisine{% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-    {% block stylesheets %}{% endblock %}
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
-        {% block header %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}Nom du Site de Cuisine
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="{{ asset('styles/app.css') }}"> {% block stylesheets %}{% endblock %}
+		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		{% block header %}
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <a href="{{ path('app_home') }}">🍽️ CuisineFacile</a>
-        </div>
-        <ul>
-            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-            <li><a href="{{ path('app_recipes') }}">Nos Recettes</a></li>
-        </ul>
-        <div class="user-menu">
-            {% if app.user %}
-                <span>👋 Hello, {{ app.user.pseudo }}</span>
-                <a href="{{ path('app_logout') }}" class="logout-btn">Se Déconnecter</a>
-            {% else %}
-                <a href="{{ path('app_login') }}" class="login-btn">Se Connecter</a>
-                <a href="{{ path('app_register') }}" class="register-btn">S'Inscrire</a>
-            {% endif %}
-        </div>
-    </nav>
+			<!-- Navigation -->
+			<nav>
+				<div class="logo">
+					<a href="{{ path('app_home') }}">🍽️ CuisineFacile</a>
+				</div>
+				<ul>
+					<li>
+						<a href="{{ path('app_home') }}">Accueil</a>
+					</li>
+					<li>
+						<a href="{{ path('app_recipes') }}">Nos Recettes</a>
+					</li>
+				</ul>
+				<div class="user-menu">
+					{% if app.user %}
+						<span>👋 Hello,
+							{{ app.user.pseudo }}</span>
+						<a href="{{ path('app_logout') }}" class="logout-btn">Se Déconnecter</a>
+					{% else %}
+						<a href="{{ path('app_login') }}" class="login-btn">Se Connecter</a>
+						<a href="{{ path('app_register') }}" class="register-btn">S'Inscrire</a>
+					{% endif %}
+				</div>
+			</nav>
 
-                    {% endblock %}
+		{% endblock %}
 
 
-    <main>
-        {% block main %}
-                {% block content %}
-                {% endblock %}
+		<main>
+			{% block main %}
+				{% block content %}{% endblock %}
 
-        {% endblock %}
-    </main>
+			{% endblock %}
+		</main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 CuisineFacile - Tous droits réservés</p>
-        <p>Contact : contact@monsitecuisine.com</p>
-        <p>Suivez-nous :
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        </p>
-    </footer>
+		<!-- Footer -->
+		<footer>
+			<p>&copy; 2025 CuisineFacile - Tous droits réservés</p>
+			<p>Contact : contact@monsitecuisine.com</p>
+			<p>Suivez-nous :
+				<a href="#">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-twitter"></i>
+				</a>
+			</p>
+		</footer>
 
-</body>
+	</body>
 </html>

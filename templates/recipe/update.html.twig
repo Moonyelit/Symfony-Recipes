@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title%}
-	Create Recipe
+	Modifier une recette
 {% endblock %}
 
 {% block stylesheets %}
@@ -9,28 +9,15 @@
 
 
 {% block body %}
+	{% block content %}
 
-	<p class="red">Create a new recipe</p>
+		<div class="form-container">
+			<h1>Modifier une recette</h1>
 
-    <img src="{{ asset('images/recipe.jpg') }}" alt="recipe">
-
-	<section>
-		{# {{form(recipesForm) }} #}
-
-	{# balise form ouvrante #}
-	{{form_start(recipesForm, {
-		'attr':{
-			'id': 'recipeForm',
-			'class': 'form-horizontal'
-		}
-	}) }}
-
-		<div class="test">
-			{{ form_label(recipeForm.name) }}
-			{{ form_widget(recipeForm.name) }}
-			{{ form_errors(recipeForm.name) }}
+			{{ include('recipe/form.html.twig', {'button_label': 'Modifier'}) }}
 
 
-		</section>
-
+			<a href="{{ path('app_recipes') }}" class="back-link">Revenir à la liste des recettes</a>
+		</div>
 	{% endblock %}
+{% endblock %}
